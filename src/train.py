@@ -12,14 +12,11 @@ model_cp = '../model'               # 网络参数保存位置
 workers = 10                        # PyTorch读取数据线程数量
 batch_size = 16                     # batch_size大小
 lr = 0.0001                         # 学习率
-epochs = 30
+epochs = 10
 
 def train():
     train_datafile = DVCD('train', dataset_dir)                                                           # 实例化一个数据集
-    test_datafile = DVCD('test', dataset_dir)
     train_dataloader = DataLoader(train_datafile, batch_size=batch_size, shuffle=True, num_workers=workers)     # 用PyTorch的DataLoader类封装，实现数据集顺序打乱，多线程读取，一次取多个数据等效果
-    test_dataloader = DataLoader(test_datafile, batch_size=batch_size, shuffle=True,
-                                  num_workers=workers)  # 用PyTorch的DataLoader类封装，实现数据集顺序打乱，多线程读取，一次取多个数据等效果
 
     print('Dataset loaded! length of train set is {0}'.format(len(train_datafile)))
 
